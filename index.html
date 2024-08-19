@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lua Script Uploader</title>
+</head>
+<body>
+    <h1>Upload Your Lua Script</h1>
+    <form id="luaForm">
+        <textarea id="luaScript" rows="10" cols="50" placeholder="Enter your Lua script here..."></textarea><br>
+        <button type="button" onclick="saveScript()">Save Script</button>
+    </form>
+
+    <script>
+        function saveScript() {
+            const scriptContent = document.getElementById('luaScript').value;
+
+            // Save script to localStorage (temporary storage in browser)
+            localStorage.setItem('luaScript', scriptContent);
+            alert('Script saved successfully!');
+        }
+
+        // Load script from localStorage on page load
+        window.onload = function() {
+            const savedScript = localStorage.getItem('luaScript');
+            if (savedScript) {
+                document.getElementById('luaScript').value = savedScript;
+            }
+        }
+    </script>
+</body>
+</html>
